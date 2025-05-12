@@ -18,19 +18,22 @@ orderID INT PRIMARY KEY,
 customerName VARCHAR (100)
 );
 INSERT INTO orderDetails
-VALUES (101, "John Doe"),
+VALUES 
+(101, "John Doe"),
 (102, "Jane Smith"),
 (103, "Emily Clark");
-CREATE TABLE productData (
-orderID INT,
-Product VARCHAR (100),
-Quantity INT NOT NULL,
-FOREIGN KEY (orderID) REFERENCES orderDetails (orderID)
+CREATE TABLE product(
+product_id INT primary key,
+productName varchar(100),
+quantity INT,
+order_id INT,
+FOREIGN KEY(order_id) REFERENCES orders(OrderID)
 );
-INSERT INTO productData (orderID, Product, Quantity)
-VALUES (101, "Laptop", 2),
-(101, "Mouse", 1),
-(102, "Tablet", 3),
-(102, "Keyboard", 1),
-(102, "Mouse", 2),
-(103, "Phone", 1);
+INSERT INTO product(product_id,productName,quantity,order_id)
+VALUES 
+(1,'laptop',2,101),
+(2,'Mouse',1,101),
+(3,'Tablet',3,102),
+(4,'Keyboard',2,102),
+(5,'Mouse',1,102),
+(6,'Phone',1,103);
